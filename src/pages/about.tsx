@@ -6,8 +6,6 @@ import contactStyles from '../styles/contact.module.css'
 
 import GitHub from '../components/svgs/github'
 import Twitter from '../components/svgs/twitter'
-import Envelope from '../components/svgs/envelope'
-import LinkedIn from '../components/svgs/linkedin'
 
 const contacts = [
   {
@@ -19,32 +17,21 @@ const contacts = [
     Comp: GitHub,
     alt: 'github icon',
     link: 'https://github.com/ijjk',
-  },
-  {
-    Comp: LinkedIn,
-    alt: 'linkedin icon',
-    link: 'https://www.linkedin.com/in/jj-kasper-0b5392166/',
-  },
-  {
-    Comp: Envelope,
-    alt: 'envelope icon',
-    link: 'mailto:jj@jjsweb.site?subject=Notion Blog',
-  },
+  }
 ]
 
 export default () => (
   <>
     <Header titlePre="Contact" />
+
     <div className={sharedStyles.layout}>
-      <div className={contactStyles.avatar}>
-        <img src="/avatar.png" alt="avatar with letters JJ" height={60} />
-      </div>
-
-      <h1 style={{ marginTop: 0 }}>Contact</h1>
-
-      <div className={contactStyles.name}>
-        JJ Kasper - Next.js Engineer @{' '}
-        <ExtLink href="https://vercel.com">Vercel</ExtLink>
+      <div>
+        <p>
+          1993年、京都府出身。浪人を経て名古屋市立大学 芸術工学部に入学しました。
+        </p>
+        <p>
+          作ったものが世に出て人に見られることが楽しく、学祭・展示会の告知サイト、ちょっとした受託業務をこなすうちに、 株式会社LIGにフロントエンドエンジニアとして就職しました。
+        </p>
       </div>
 
       <div className={contactStyles.links}>
