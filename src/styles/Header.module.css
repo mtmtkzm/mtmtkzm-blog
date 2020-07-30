@@ -36,8 +36,6 @@
     align-items: center;
 
     li {
-      font-weight: bold;
-
       &:not(:last-of-type) {
         &::after {
           content: '･';

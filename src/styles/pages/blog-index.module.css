@@ -1,0 +1,30 @@
+.Section_Blog {
+  padding: 48px 0;
+}
+
+.PostItem {
+  padding: 20px 0;
+
+  a {
+    display: block;
+    transition: opacity 0.33s ease-in-out;
+
+    &:hover {
+      opacity: 0.66;
+    }
+  }
+
+  &_MetaDetail {
+    display: flex;
+    align-items: center;
+
+    > * {
+      &:not(:last-of-type) {
+        &::after {
+          content: '･';
+          padding: 0 12px;
+        }
+      }
+    }
+  }
+}

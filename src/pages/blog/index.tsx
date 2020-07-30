@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import Header from '../../components/header'
 
-import Styles from '../../styles/blog.module.css'
+import Styles from '../../styles/pages/blog-index.module.css'
 import { BaseLayout } from '../../styles/shared.module.css'
 
 import { getBlogLink, getDateStr, postIsPublished } from '../../lib/blog-helpers'
@@ -32,31 +32,34 @@ export async function getStaticProps({ preview }) {
 export default ({ posts = [] }) => {
   return (
     <>
-      <Header titlePre="Blog" />
+      <Header titlePre="Blog"/>
 
       <div className={BaseLayout}>
-        <SectionTitle title="Blog"/>
+        <section class={Styles.Section_Blog}>
+          <SectionTitle title="Blog"/>
 
-        {posts.map(post => {
-          const { Slug, Page, Date } = post
+          {posts.map(post => {
+            const { Slug, Page, Date } = post
 
-          const dateText = getDateStr(Date)
-          const linkAs = getBlogLink(Slug)
+            const dateText = getDateStr(Date)
+            const linkAs = getBlogLink(Slug)
 
-          return (
-            <div key={Slug}>
-              <Link href="/blog/[slug]" as={linkAs}>
-                <a>
-                  <div className={Styles.Card_Meta}>
-                    <span>{dateText}</span>
-                  </div>
+            return (
+              <div key={Slug} className={Styles.PostItem}>
+                <Link href="/blog/[slug]" as={linkAs}>
+                  <a>
+                    <div className={Styles.PostItem_MetaDetail}>
+                      <span>{dateText}</span>
+                      <span>rider</span>
+                    </div>
 
-                  <h3 className={Styles.titleContainer}>{Page}</h3>
-                </a>
-              </Link>
-            </div>
+                    <h3>{Page}</h3>
+                  </a>
+                </Link>
+              </div>
           )
-        })}
+          })}
+        </section>
       </div>
     </>
   )

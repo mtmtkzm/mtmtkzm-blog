@@ -1,0 +1,28 @@
+.PostMeta {
+  padding: 36px 0 20px;
+  border-bottom: 1px solid var(--color-secondary);
+
+  &_Title {
+    margin-bottom: 20px;
+    font-size: 28px;
+    font-weight: bold;
+  }
+
+  &_Detail {
+    display: flex;
+    align-items: center;
+
+    > * {
+      &:not(:last-of-type) {
+        &::after {
+          content: '･';
+          padding: 0 12px;
+        }
+      }
+    }
+  }
+}
+
+.PostBody {
+  padding: 24px 0 64px;
+}

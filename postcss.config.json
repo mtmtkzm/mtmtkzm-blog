@@ -13,6 +13,7 @@
           "custom-properties": false
         }
       }
-    ]
+    ],
+    "postcss-color-function"
   ]
 }
