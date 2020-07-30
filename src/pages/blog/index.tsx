@@ -2,7 +2,7 @@ import Link from 'next/link'
 import Header from '../../components/header'
 
 import Styles from '../../styles/pages/blog-index.module.css'
-import { BaseLayout } from '../../styles/shared.module.css'
+import SharedStyles from '../../styles/shared.module.css'
 
 import { getBlogLink, getDateStr, postIsPublished } from '../../lib/blog-helpers'
 import getBlogIndex from '../../lib/notion/getBlogIndex'
@@ -34,8 +34,8 @@ export default ({ posts = [] }) => {
     <>
       <Header titlePre="Blog"/>
 
-      <div className={BaseLayout}>
-        <section class={Styles.Section_Blog}>
+      <div className={SharedStyles.BaseLayout}>
+        <section className={Styles.Section_Blog}>
           <SectionTitle title="Blog"/>
 
           {posts.map(post => {

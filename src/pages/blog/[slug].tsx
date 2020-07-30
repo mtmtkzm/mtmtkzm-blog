@@ -6,7 +6,7 @@ import Heading from '../../components/heading'
 import components from '../../components/dynamic'
 import ReactJSXParser from '@zeit/react-jsx-parser'
 import Styles from '../../styles/pages/blog-slug.module.css'
-import { ArticleBody, BaseLayout } from '../../styles/shared.module.css'
+import SharedStyles from '../../styles/shared.module.css'
 import { textBlock } from '../../lib/notion/renderers'
 import getPageData from '../../lib/notion/getPageData'
 import React, { CSSProperties, useEffect } from 'react'
@@ -151,7 +151,7 @@ const RenderPost = ({ post, redirect, preview }) => {
           </div>
         </div>
       )}
-      <div className={BaseLayout}>
+      <div className={SharedStyles.BaseLayout}>
         <div className={Styles.PostMeta}>
           <div className={Styles.PostMeta_Title}>
             <h1>{post.Page || ''}</h1>
@@ -163,7 +163,7 @@ const RenderPost = ({ post, redirect, preview }) => {
           </div>
         </div>
 
-        <div className={`${ArticleBody} ${Styles.PostBody}`}>
+        <div className={`${SharedStyles.ArticleBody} ${Styles.PostBody}`}>
           {(!post.content || post.content.length === 0) && (
             <p>This post has no content</p>
           )}
@@ -233,8 +233,10 @@ const RenderPost = ({ post, redirect, preview }) => {
 
             switch (type) {
               case 'page':
-              case 'divider':
                 break
+              case 'divider':
+                toRender.push(<hr/>)
+                  break;
               case 'text':
                 if (properties) {
                   toRender.push(textBlock(properties.title, false, id))
@@ -379,7 +381,7 @@ const RenderPost = ({ post, redirect, preview }) => {
                 toRender.push(
                   <div className="callout" key={id}>
                     {value.format?.page_icon && (
-                      <div>{value.format?.page_icon}</div>
+                      <div className="icon">{value.format?.page_icon}</div>
                     )}
                     <div className="text">
                       {textBlock(properties.title, true, id)}

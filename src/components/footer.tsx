@@ -1,11 +1,11 @@
 import Styles from '../styles/Footer.module.css'
-import { BaseLayout } from '../styles/shared.module.css'
+import SharedStyles from '../styles/shared.module.css'
 import SectionTitle from './SectionTitle'
 
 export default () => (
   <>
     <footer className={Styles.Footer}>
-      <div className={BaseLayout}>
+      <div className={SharedStyles.BaseLayout}>
         <SectionTitle title="Say Hello." />
 
         <ul>

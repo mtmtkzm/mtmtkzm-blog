@@ -1,7 +1,7 @@
 import Header from '../components/header'
 import ExtLink from '../components/ext-link'
 
-import { ArticleBody, BaseLayout } from '../styles/shared.module.css'
+import SharedStyles from '../styles/shared.module.css'
 import Styles from '../styles/pages/about.module.css'
 
 import GitHub from '../components/svgs/github'
@@ -43,11 +43,11 @@ export default () => (
   <>
     <Header titlePre="Contact"/>
 
-    <div className={BaseLayout}>
+    <div className={SharedStyles.BaseLayout}>
       <section className={Styles.Section_About}>
         <SectionTitle title="Hello,"/>
 
-        <div className={ArticleBody}>
+        <div className={SharedStyles.ArticleBody}>
           <img src="/rider.png" alt="Rider - Kazuma Matsumoto"/>
 
           <p>
@@ -74,10 +74,8 @@ export default () => (
 
           <h3>スキルセット</h3>
 
-          <ul class={Styles.Skills}>
-            {skills.map(skill => (
-              <li>{skill}</li>
-            ))}
+          <ul className={Styles.Skills}>
+            {skills.map(skill => <li>{skill}</li>)}
           </ul>
         </div>
       </section>

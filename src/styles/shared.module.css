@@ -33,6 +33,16 @@
     em, strong, b {
       font-weight: bold;
     }
+
+    a {
+      text-decoration: underline;
+    }
+
+    :global {
+      .underline {
+        text-decoration: underline;
+      }
+    }
   }
 
   ul {
@@ -61,5 +71,24 @@
     max-width: 100%;
     margin-left: auto;
     margin-right: auto;
+  }
+
+  :global {
+    .twitter-tweet-rendered {
+      margin: 0 auto;
+    }
+
+    .callout {
+      display: flex;
+      align-items: center;
+      padding: 1em 1.5em;
+      border: 1px dashed var(--color-gray);
+      border-radius: 8px;
+
+      .text {
+        margin-top: 0;
+        margin-left: 1em;
+      }
+    }
   }
 }

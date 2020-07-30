@@ -1,20 +1,20 @@
 import Link from 'next/link'
 import Header from '../components/header'
 import Styles from '../styles/pages/index.module.css'
-import { ArticleBody, BaseLayout } from '../styles/shared.module.css'
+import SharedStyles from '../styles/shared.module.css'
 import SectionTitle from '../components/SectionTitle'
 
 export default () => (
   <>
-    <Header titlePre="Home" />
+    <Header titlePre="Home"/>
 
-    <div className={`${BaseLayout}`}>
+    <div className={`${SharedStyles.BaseLayout}`}>
       <section className={Styles.Section_Hello}>
-        <SectionTitle title="Hello," />
+        <SectionTitle title="Hello,"/>
 
-        <div className={`${Styles.Hello_Text} ${ArticleBody}`}>
+        <div className={`${Styles.Hello_Text} ${SharedStyles.ArticleBody}`}>
           <p>
-            初めまして、ライダーです。<br />
+            初めまして、ライダーです。<br/>
             株式会社LIGでフロントエンドエンジニアとして、受託でWebサイトやWebサービスの開発をしています。
           </p>
 
@@ -23,13 +23,13 @@ export default () => (
           </p>
 
           <p className={Styles.ProfileLink}>
-            <Link href="/about">More Profile ></Link>
+            <Link href="/about">More Profile &gt;</Link>
           </p>
         </div>
       </section>
 
       <section className={Styles.Section_Career}>
-        <SectionTitle title="Career" />
+        <SectionTitle title="Career"/>
 
         <div className={Styles.Career}>
           <span className={Styles.Career_Year}>2020</span>
