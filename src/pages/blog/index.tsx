@@ -1,98 +1,59 @@
 import Link from 'next/link'
 import Header from '../../components/header'
 
-import blogStyles from '../../styles/blog.module.css'
-import sharedStyles from '../../styles/shared.module.css'
+import Styles from '../../styles/blog.module.css'
+import { BaseLayout } from '../../styles/shared.module.css'
 
-import {
-  getBlogLink,
-  getDateStr,
-  postIsPublished,
-} from '../../lib/blog-helpers'
-import { textBlock } from '../../lib/notion/renderers'
-import getNotionUsers from '../../lib/notion/getNotionUsers'
+import { getBlogLink, getDateStr, postIsPublished } from '../../lib/blog-helpers'
 import getBlogIndex from '../../lib/notion/getBlogIndex'
+import SectionTitle from '../../components/SectionTitle'
 
 export async function getStaticProps({ preview }) {
   const postsTable = await getBlogIndex()
 
-  const authorsToGet: Set<string> = new Set()
   const posts: any[] = Object.keys(postsTable)
     .map(slug => {
       const post = postsTable[slug]
+      const isDraftPost = !preview && !postIsPublished(post)
+
       // remove draft posts in production
-      if (!preview && !postIsPublished(post)) {
-        return null
-      }
-      post.Authors = post.Authors || []
-      for (const author of post.Authors) {
-        authorsToGet.add(author)
-      }
-      return post
+      return isDraftPost ? null : post
     })
     .filter(Boolean)
 
-  const { users } = await getNotionUsers([...authorsToGet])
-
-  posts.map(post => {
-    post.Authors = post.Authors.map(id => users[id].full_name)
-  })
-
   return {
     props: {
-      preview: preview || false,
       posts,
     },
     unstable_revalidate: 10,
   }
 }
 
-export default ({ posts = [], preview }) => {
+export default ({ posts = [] }) => {
   return (
     <>
       <Header titlePre="Blog" />
-      {preview && (
-        <div className={blogStyles.previewAlertContainer}>
-          <div className={blogStyles.previewAlert}>
-            <b>Note:</b>
-            {` `}Viewing in preview mode{' '}
-            <Link href={`/api/clear-preview`}>
-              <button className={blogStyles.escapePreview}>Exit Preview</button>
-            </Link>
-          </div>
-        </div>
-      )}
-      <div className={`${sharedStyles.layout} ${blogStyles.blogIndex}`}>
-        <h1>My Notion Blog</h1>
-        {posts.length === 0 && (
-          <p className={blogStyles.noPosts}>There are no posts yet</p>
-        )}
+
+      <div className={BaseLayout}>
+        <SectionTitle title="Blog"/>
+
         {posts.map(post => {
+          const { Slug, Page, Date } = post
+
+          const dateText = getDateStr(Date)
+          const linkAs = getBlogLink(Slug)
+
           return (
-            <div className={blogStyles.postPreview} key={post.Slug}>
-              <h3>
-                <Link href="/blog/[slug]" as={getBlogLink(post.Slug)}>
-                  <div className={blogStyles.titleContainer}>
-                    {!post.Published && (
-                      <span className={blogStyles.draftBadge}>Draft</span>
-                    )}
-                    <a>{post.Page}</a>
+            <div key={Slug}>
+              <Link href="/blog/[slug]" as={linkAs}>
+                <a>
+                  <div className={Styles.Card_Meta}>
+                    <span>{dateText}</span>
                   </div>
-                </Link>
-              </h3>
-              {post.Authors.length > 0 && (
-                <div className="authors">By: {post.Authors.join(' ')}</div>
-              )}
-              {post.Date && (
-                <div className="posted">Posted: {getDateStr(post.Date)}</div>
-              )}
-              <p>
-                {(!post.preview || post.preview.length === 0) &&
-                  'No preview available'}
-                {(post.preview || []).map((block, idx) =>
-                  textBlock(block, true, `${post.Slug}${idx}`)
-                )}
-              </p>
+
+                  <h3 className={Styles.titleContainer}>{Page}</h3>
+                </a>
+              </Link>
             </div>
           )
         })}

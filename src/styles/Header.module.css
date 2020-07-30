@@ -1,0 +1,53 @@
+.Header {
+  font-family: 'Montserrat', sans-serif;
+  max-width: 768px;
+  margin: 0 auto;
+  padding: 36px 20px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+  &_Title {
+    margin-bottom: 12px;
+
+    a {
+      display: block;
+    }
+  }
+
+  &_Primary {
+    display: block;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  &_Secondary {
+    display: block;
+    margin-top: 4px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1;
+  }
+
+  &_Navigation {
+    display: flex;
+    align-items: center;
+
+    li {
+      font-weight: bold;
+
+      &:not(:last-of-type) {
+        &::after {
+          content: '･';
+          padding: 0 12px;
+        }
+      }
+
+      a {
+        padding: 4px 0;
+      }
+    }
+  }
+}

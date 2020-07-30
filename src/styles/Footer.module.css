@@ -1,0 +1,27 @@
+.Footer {
+  box-sizing: border-box;
+  background-color: var(--color-gray);
+  color: white;
+  padding: 64px 0;
+
+  ul {
+    margin-top: 16px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+
+    li {
+      &:not(:last-of-type) {
+        &::after {
+          content: '･';
+          padding: 0 12px;
+        }
+      }
+    }
+  }
+}
+
+.Footer_LinkMail {
+  display: inline-block;
+  cursor: pointer;
+}

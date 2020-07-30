@@ -1,0 +1,19 @@
+.Skills {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  margin-left: 0;
+
+  li {
+    &::after {
+      content: '/';
+      display: inline-block;
+      margin: 0 5px;
+    }
+  }
+}
+
+
+.Section_About {
+  padding: 48px 0;
+}
