@@ -19,28 +19,34 @@ export default ({ titlePre = '' }) => {
   return (
     <header>
       <Head>
-        <title>{titlePre ? `${titlePre} |` : ''} My Notion Blog</title>
+        <title>{titlePre ? `${titlePre} |` : ''} MTMTKZM</title>
         <meta
           name="description"
           content="An example Next.js site using Notion for the blog"
         />
-        <link rel="icon" type="image/x-icon" href="/favicon.png"/>
-        <meta name="og:title" content="My Notion Blog"/>
-        <meta property="og:image" content={ogImageUrl}/>
-        <meta name="twitter:site" content="@mtmtkzm"/>
-        <meta name="twitter:card" content="summary_large_image"/>
-        <meta name="twitter:image" content={twitterCardImageUrl}/>
-        <link data-n-head="true" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,800"/>
-        <link data-n-head="true" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata:400,700"/>
+        <link rel="icon" type="image/x-icon" href="/favicon.png" />
+        <meta name="og:title" content="MTMTKZM" />
+        <meta property="og:image" content={ogImageUrl} />
+        <meta name="twitter:site" content="@mtmtkzm" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:image" content={twitterCardImageUrl} />
+        <link
+          data-n-head="true"
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Montserrat:400,800"
+        />
+        <link
+          data-n-head="true"
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Inconsolata:400,700"
+        />
       </Head>
 
       <div className={Styles.Header}>
         <Link href="/">
           <h1 className={Styles.Header_Title}>
             <a>
-              <span className={Styles.Header_Primary}>
-                MTMTKZM
-              </span>
+              <span className={Styles.Header_Primary}>MTMTKZM</span>
 
               <span className={Styles.Header_Secondary}>
                 Rider - Kazuma Matsumoto
