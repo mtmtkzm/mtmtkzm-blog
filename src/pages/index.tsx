@@ -6,35 +6,41 @@ import SectionTitle from '../components/SectionTitle'
 
 export default () => (
   <>
-    <Header titlePre="Home"/>
+    <Header titlePre="ライダーのポートフォリオサイト" />
 
     <div className={`${SharedStyles.BaseLayout}`}>
       <section className={Styles.Section_Hello}>
-        <SectionTitle title="Hello,"/>
+        <SectionTitle title="Hello," />
 
         <div className={`${Styles.Hello_Text} ${SharedStyles.ArticleBody}`}>
           <p>
-            初めまして、ライダーです。<br/>
-            株式会社LIGでフロントエンドエンジニアとして、受託でWebサイトやWebサービスの開発をしています。
+            初めまして、ライダーです。
+            <br />
+            いわゆる中型のバイクに乗れます。
           </p>
-
           <p>
-            仕事（会社）では、かっこいいものより便利なものを作ることに携わりたいと思っています。
+            <a href="//zebranding.com" target="_blank">
+              株式会社 ZeBrand
+            </a>{' '}
+            で `User Interface Developer` を肩書きにエンジニアをしています。
           </p>
 
-          <p className={Styles.ProfileLink}>
-            <Link href="/about">More Profile &gt;</Link>
-          </p>
+          <img src="/rider.png" alt="Rider - Kazuma Matsumoto" />
         </div>
       </section>
 
       <section className={Styles.Section_Career}>
-        <SectionTitle title="Career"/>
+        <SectionTitle title="Career" />
 
         <div className={Styles.Career}>
           <span className={Styles.Career_Year}>2020</span>
           <ul>
-            <li>入社 <a href="//zebranding.com" target="_blank">株式会社 ZeBrand</a></li>
+            <li>
+              入社{' '}
+              <a href="//zebranding.com" target="_blank">
+                株式会社 ZeBrand
+              </a>
+            </li>
             <li>退職 株式会社 LIG</li>
           </ul>
 
@@ -52,7 +58,12 @@ export default () => (
 
           <span className={Styles.Career_Year}>2017</span>
           <ul>
-            <li>入社 <a href="//liginc.co.jp" target="_blank">株式会社 LIG</a></li>
+            <li>
+              入社{' '}
+              <a href="//liginc.co.jp" target="_blank">
+                株式会社 LIG
+              </a>
+            </li>
             <li>卒業 名古屋市立大学 芸術工学部</li>
           </ul>
 
@@ -71,7 +82,6 @@ export default () => (
             <li>入学 名古屋市立大学 芸術工学部</li>
           </ul>
         </div>
-
       </section>
     </div>
   </>
